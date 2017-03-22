@@ -1,0 +1,34 @@
+\begin{tikzpicture}[
+	list/.style={
+		thick, rectangle split,
+		rectangle split parts=2, draw,
+		rectangle split horizontal, minimum size=18pt,
+		inner sep=4pt, text=black,
+		rectangle split part fill={white, blue!20}
+	},
+	->, start chain, thick
+	]
+	\node[on chain] (0) {L};
+	\node[list,on chain] (1) {2};
+	\node[list,on chain] (2) {5};
+	\node[list,on chain] (3) {7};
+	\node[list,on chain] (4) {3};
+	\node[list,on chain] (5) {8};
+	\node[on chain] (6) {$\cdots$};
+	\node[list,on chain] (7) {6};
+	\node[list,on chain] (8) {4\nodepart{two}$\wedge$};
+	\foreach \i in {0,...,6}
+	{
+		\pgfmathsetmacro\next{int(\i + 1)}
+		\draw[->] (\i.east) -- (\next .west);
+	}
+	\draw[*->] let \p1 = (7.two), \p2 = (7.center) in (\x1,\y2) -- (8);
+	\node [below = .5cm of 2] (P) {P};
+	\draw[->] (P) -- (2);
+	\node [below = .5cm of 3] (Q) {Q};
+	\draw[->] (Q) -- (3);
+	\node [below = .5cm of 4] (R) {R};
+	\draw[->] (R) -- (4);
+	\node [below = .5cm of 5] (S) {S};
+	\draw[->] (S) -- (5);
+\end{tikzpicture}

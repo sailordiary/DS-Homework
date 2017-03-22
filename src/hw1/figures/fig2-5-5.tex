@@ -1,0 +1,26 @@
+\begin{tikzpicture}[
+list/.style={
+	thick, rectangle split,
+	rectangle split parts=2, draw,
+	rectangle split horizontal, minimum size=18pt,
+	inner sep=4pt, text=black,
+	rectangle split part fill={white, blue!20}
+},
+->, start chain, thick
+]
+\node[on chain] (0) {L};
+\node[list,on chain] (1) {};
+\node[list,on chain] (2) {2};
+\node[list,on chain] (3) {4};
+\node[list,on chain] (4) {6};
+\node[list,on chain] (5) {7};
+\node[list,on chain] (6) {8\nodepart{two}$\wedge$};
+\foreach \i in {0,...,4}
+{
+	\pgfmathsetmacro\next{int(\i + 1)}
+	\draw[->] (\i.east) -- (\next .west);
+}
+\draw[*->] let \p1 = (5.two), \p2 = (5.center) in (\x1,\y2) -- (6);
+\node [below = .5cm of 6] (P) {P};
+\draw[->] (P) -- (6);
+\end{tikzpicture}

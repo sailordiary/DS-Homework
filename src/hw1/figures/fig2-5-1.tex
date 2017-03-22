@@ -1,0 +1,16 @@
+\begin{tikzpicture}[
+list/.style={
+	thick, rectangle split,
+	rectangle split parts=2, draw,
+	rectangle split horizontal, minimum size=18pt,
+	inner sep=4pt, text=black,
+	rectangle split part fill={white, blue!20}
+},
+->, start chain, thick
+]
+\node[on chain] (0) {L};
+\node[list,on chain] (1) {};
+\draw[->] (0.east) -- (1.west);
+\node [below = .5cm of 1] (P) {P};
+\draw[->] (P) -- (1);
+\end{tikzpicture}
